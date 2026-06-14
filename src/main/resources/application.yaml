@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: open-telemetry-service
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+    logging:
+      endpoint: http://localhost:4318/v1/logs
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.boot.actuator.autoconfigure.opentelemetry: DEBUG
